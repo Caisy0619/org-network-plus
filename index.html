@@ -179,14 +179,14 @@ function rn(){
   var nd=new vis.DataSet();
   for(var i=0;i<people.length;i++){
     var p=people[i];
-    var bg=p.dept.indexOf('商务')>=0?'#FF9FF3':(deptColors[p.dept]||'#999');
+    var bg=p.dept.indexOf('销售')>=0||p.dept.indexOf('总经办')>=0?'#4FC3F7':(p.dept.indexOf('商务')>=0?'#FF69B4':(deptColors[p.dept]||'#999'));
     var sz=p.group==='高管'||p.group==='管理层'?20:p.group==='中层'||p.group==='部门负责人'||p.group==='区域负责人'?16:13;
     if(p.title.indexOf('董事长')>=0||p.id.indexOf('董事长')>=0||p.title.indexOf('CEO')>=0)sz=26;
     else if(p.title.indexOf('总经理')>=0||p.title.indexOf('总裁')>=0||p.title.indexOf('COO')>=0||p.title.indexOf('CFO')>=0)sz=22;
     var sh=p.group==='高管'||p.group==='管理层'?'star':p.group==='中层'||p.group==='部门负责人'||p.group==='区域负责人'?'diamond':'ellipse';
     nd.add({id:p.id,label:p.id,widthConstraint:50,
       color:{background:bg,border:'#333',highlight:{background:bg,border:'#FFD700'}},
-      font:{color:p.dept.indexOf('商务')>=0?'#333':'#fff',size:9,face:'PingFang SC, Microsoft YaHei, sans-serif',strokeWidth:2,strokeColor:'rgba(0,0,0,0.4)'},
+      font:{color:'#fff',size:9,face:'PingFang SC, Microsoft YaHei, sans-serif',strokeWidth:2,strokeColor:'rgba(0,0,0,0.4)'},
       shape:sh,size:sz,borderWidth:1,shadow:{enabled:true,size:2}});
   }
   var ed=new vis.DataSet();
